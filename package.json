@@ -1,0 +1,25 @@
+{
+  "name": "nodejsapis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegocamara/nodejsapis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegocamara/nodejsapis/issues"
+  },
+  "homepage": "https://github.com/diegocamara/nodejsapis#readme",
+  "dependencies": {
+    "debug": "^2.6.8",
+    "express": "^4.15.3",
+    "http": "0.0.0"
+  }
+}
