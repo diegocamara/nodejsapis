@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/diegocamara/nodejsapis#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "debug": "^2.6.8",
     "express": "^4.15.3",
     "http": "0.0.0"
