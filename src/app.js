@@ -20,7 +20,10 @@ const create = router.post('/', (req, res, next) => {
 
 const put = router.put('/:id', (req, res, next) => {
     const id = req.params.id;
-    res.status(200).send({ id: id, item: req.body });
+    res.status(200).send({
+        id: id,
+        item: req.body
+    });
 });
 
 const del = router.delete('/:id', (req, res, mext) => {
