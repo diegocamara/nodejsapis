@@ -2,7 +2,10 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const app = express();
+
+mongoose.connect('mongodb://localhost/nodestore');
 
 const indexRoute = require('./routes/index-route');
 const productsRoute = require('./routes/products-route');
