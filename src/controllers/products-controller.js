@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
+const ItemValidator = require('./../validators/item-validator');
 
 
 exports.get = (req, res, next) => {
@@ -39,6 +40,15 @@ exports.getByTag = (req, res, next) => {
 };
 
 exports.post = (req, res, next) => {
+
+    let itemValidator = new ItemValidator();
+
+    itemValidator.hasMaxLen(req.body.title, 10, 'O título deve conter no máximo 10 caracteres.');
+    
+    if(!itemValidator.isValid()){
+        res.status(400).send(itemValidator.errors());
+        return;
+    }
 
     let product = new Product(req.body);
 
