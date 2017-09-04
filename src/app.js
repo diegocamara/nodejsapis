@@ -9,6 +9,7 @@ const app = express();
 mongoose.connect('mongodb://localhost/nodestore');
 
 const Product = require('./models/product');
+const Custumer = require('./models/custumer');
 
 const indexRoute = require('./routes/index-route');
 const productsRoute = require('./routes/products-route');
