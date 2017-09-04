@@ -6,13 +6,11 @@ const ItemValidator = require('./../validators/item-validator');
 const ProductRepository = require('../repositories/product-repository');
 
 exports.get = (req, res, next) => {
-
     ProductRepository.get().then(data => {
         res.status(200).send(data);
     }).catch(error => {
         res.status(400).send(error);
     });
-
 };
 
 exports.getBySlug = (req, res, next) => {
