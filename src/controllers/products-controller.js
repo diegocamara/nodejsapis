@@ -62,31 +62,24 @@ exports.post = (req, res, next) => {
 };
 
 exports.put = (req, res, next) => {
-
     ProductRepository.update(req.params.id, {
         title: req.body.title,
         desciption: req.body.description,
         price: req.body.price,
         slug: req.body.slug
     }).then(item => {
-
         res.status(200).send({
             message: 'Produto atualizado com sucesso!'
         });
-
     }).catch(error => {
-
         res.status(400).send({
             message: 'Falha ao atualizar produto!',
             data: error
         });
-
     });
-
 };
 
 exports.delete = (req, res, mext) => {
-
     ProductRepository.delete(req.body.id).then(item => {
         res.status(200).send({
             message: 'Produto removido com sucesso!'
@@ -97,5 +90,4 @@ exports.delete = (req, res, mext) => {
             data: error
         });
     });
-
 };
