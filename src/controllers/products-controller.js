@@ -1,7 +1,6 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Product = mongoose.model('Product');
 const ItemValidator = require('./../validators/item-validator');
 const ProductRepository = require('../repositories/product-repository');
 
@@ -38,7 +37,6 @@ exports.getByTag = (req, res, next) => {
 };
 
 exports.post = (req, res, next) => {
-
     let itemValidator = new ItemValidator();
 
     itemValidator.hasMaxLen(req.body.title, 10, 'O título deve conter no máximo 10 caracteres.');
