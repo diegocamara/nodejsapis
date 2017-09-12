@@ -1,6 +1,5 @@
 'use strict';
 
-const mongoose = require('mongoose');
 const ItemValidator = require('./../validators/item-validator');
 const ProductRepository = require('../repositories/product-repository');
 
