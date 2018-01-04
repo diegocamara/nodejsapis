@@ -9,9 +9,8 @@ exports.create = async (data) => {
 };
 
 exports.authenticate = async (data) => {
-    let res = await Custumer.find({
-        email: data.email,
-        password: data.password
+    let res = await Custumer.findOne({
+        email: data.email
     });
     return res;
 };

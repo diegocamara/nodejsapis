@@ -21,13 +21,13 @@ const Order = require('./models/order');
 
 const indexRoute = require('./routes/index-route');
 const productsRoute = require('./routes/products-route');
-const custumerRoute = require('./routes/custumer-route');
+const customerRoute = require('./routes/custumer-route');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', indexRoute);
 app.use('/products', productsRoute);
-app.use('/custumers', custumerRoute);
+app.use('/customers', customerRoute);
 
 module.exports = app;
