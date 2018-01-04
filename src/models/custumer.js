@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+let bcrypt = require('bcrypt');
 
 const schema = new Schema({
     name: {
@@ -16,6 +17,18 @@ const schema = new Schema({
         type: String,
         required: true
     }
+});
+
+schema.pre('save', function (next) {
+    let custumer = this;
+
+    bcrypt.hash(custumer.password, global.SALT_ROUNDS, (err, hash) => {
+        if (err) {
+            return next(err);
+        }
+        custumer.password = hash;
+        next();
+    });
 });
 
 module.exports = mongoose.model('Custumer', schema);

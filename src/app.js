@@ -2,11 +2,18 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const config = require('./config');
 
 const mongoose = require('mongoose');
 const app = express();
 
-mongoose.connect('mongodb://localhost/nodestore');
+mongoose.Promise = global.Promise;
+
+mongoose.connect(process.env.DB_CONNECTION_URL, {
+    keepAlive: true,
+    reconnectTries: Number.MAX_VALUE,
+    useMongoClient: true
+});
 
 const Product = require('./models/product');
 const Custumer = require('./models/custumer');

@@ -1,5 +1,5 @@
 'use strict';
-
+require('dotenv').config();
 const app = require('../src/app');
 const http = require('http');
 const debug = require('debug')('nodeapis:server');

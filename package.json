@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/server.js"
+    "start": "nodemon ./bin/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,10 +18,13 @@
   },
   "homepage": "https://github.com/diegocamara/nodejsapis#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.17.2",
     "debug": "^2.6.8",
+    "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "http": "0.0.0",
+    "jsonwebtoken": "^7.4.0",
     "mongoose": "^4.11.7"
   },
   "devDependencies": {
