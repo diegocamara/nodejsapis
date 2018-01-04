@@ -16,12 +16,12 @@ mongoose.connect(process.env.DB_CONNECTION_URL, {
 });
 
 const Product = require('./models/product');
-const Custumer = require('./models/custumer');
+const Customer = require('./models/customer');
 const Order = require('./models/order');
 
 const indexRoute = require('./routes/index-route');
 const productsRoute = require('./routes/products-route');
-const customerRoute = require('./routes/custumer-route');
+const customerRoute = require('./routes/customer-route');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

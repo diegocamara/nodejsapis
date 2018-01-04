@@ -2,7 +2,7 @@
 
 // const mongoose = require('mongoose');
 const ItemValidator = require('./../validators/item-validator');
-const CustomerRepository = require('../repositories/custumer-repository');
+const CustomerRepository = require('../repositories/customer-repository');
 const authService = require('./../services/auth-service');
 let bcrypt = require('bcrypt');
 
@@ -39,39 +39,38 @@ exports.authenticate = async (req, res, next) => {
     try {
         const customer = await CustomerRepository.authenticate({
             email: req.body.email
-        });
+        });        
+
+        let checkHashHandle = async (err, result) => {
+
+            if (result) {
+
+                let data = {
+                    name: customer.name,
+                    email: customer.email
+                };
+
+                const token = await authService.generateToken(data);
+
+                res.status(201).send({
+                    token: token,
+                    data: data
+                });
+
+
+            } else {
+                res.status(401).send({
+                    message: 'Senha inválida'
+                });
+                return;
+            }
+
+        }
 
         if (customer) {
 
-            bcrypt.compare(req.body.password, customer.password, function (err, result) {
-
-                if (result) {
-                    
-                    let data = {
-                        name: customer.name,
-                        email: customer.email
-                    };
-
-                    const token = await authService.generateToken(data);
-
-                    res.status(201).send({
-                        token: token,
-                        data: data
-                    });
-
-
-                } else {
-                    res.status(401).send({
-                        message: 'Senha inválida'
-                    });
-                    return;
-                }
-
-
-            });
-
-            console.log(customer);
-
+            bcrypt.compare(req.body.password, customer.password, checkHashHandle);
+            
         } else {
             res.status(404).send({
                 message: 'Usuário inválido'
@@ -80,7 +79,7 @@ exports.authenticate = async (req, res, next) => {
         }
 
 
-    } catch (e) {
+    } catch (e) {       
         res.status(500).send({
             message: 'Falha ao cadastrar cliente!',
             data: e

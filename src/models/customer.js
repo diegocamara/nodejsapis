@@ -20,15 +20,15 @@ const schema = new Schema({
 });
 
 schema.pre('save', function (next) {
-    let custumer = this;
+    let customer = this;
 
-    bcrypt.hash(custumer.password, global.SALT_ROUNDS, (err, hash) => {
+    bcrypt.hash(customer.password, global.SALT_ROUNDS, (err, hash) => {
         if (err) {
             return next(err);
         }
-        custumer.password = hash;
+        customer.password = hash;
         next();
     });
 });
 
-module.exports = mongoose.model('Custumer', schema);
+module.exports = mongoose.model('Customer', schema);
